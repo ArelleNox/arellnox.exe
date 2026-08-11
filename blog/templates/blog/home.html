@@ -1,5 +1,57 @@
-<h1>Arellnox</h1> 
-<p>Showing posts in: {{ current_lang }}</p> 
-<ul> {% for post in posts %} 
-    <li>{{ post.title }} — {{ post.category }}</li> 
-    {% empty %} <li>No posts yet in this language.</li> {% endfor %} </ul>
+{% load static %} <!DOCTYPE html> <html lang="{{ current_lang }}">
+  <head>
+    <meta charset="UTF-8" /> <title>Arellnox</title> <link rel="preconnect" href="https://fonts.googleapis.com" /> <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600&family=Zen+Kaku+Gothic+New:wght@300;500&display=swap" rel="stylesheet" /> <link rel="stylesheet" href="{% static 'blog/css/style.css' %}" />
+  </head> <body>
+    <header class="nav">
+      <div class="nav-inner">
+        <div class="brand">Arellnox.exe</div> <nav class="links">
+          <div class="lang-toggle">
+            <a href="?lang=en" class="{% if current_lang == 'en' %}active{% endif %}">EN</a> <a href="?lang=fr" class="{% if current_lang == 'fr' %}active{% endif %}">FR</a> <a href="?lang=ja" class="{% if current_lang == 'ja' %}active{% endif %}">JA</a>
+          </div>
+        </nav>
+      </div>
+    </header> <section class="hero">
+      <div class="blob blob--1"></div> <div class="blob blob--2"></div> <div class="moon"></div> <div class="wrap hero-inner">
+        <p class="eyebrow">a personal, no-niche blog</p> <h1 class="title">Thoughts kept<br />at <em>quiet</em> hours</h1> <p class="hero-desc">
+          <strong>No niche, no schedule</strong> — just the things I'm learning, playing, cooking, wearing, and building.
+        </p> <a href="#posts" class="btn btn--fill">Read the journal →</a>
+      </div>
+    </section> <section class="shelves">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>What lives here</h2>
+        </div> <div class="shelf-grid">
+          <div class="shelf" style="--accent:#556B5E;">
+            <h3>Video Games</h3><p>Slow playthroughs and old JRPGs.</p>
+          </div> <div class="shelf" style="--accent:#2F3F2E;">
+            <h3>Game Development</h3><p>Devlogs from tiny personal projects.</p>
+          </div> <div class="shelf" style="--accent:#6A5A74;">
+            <h3>Books</h3><p>What I'm reading, half-finished thoughts.</p>
+          </div> <div class="shelf" style="--accent:#BFC6D1;">
+            <h3>Personal Growth</h3><p>Habits I'm testing on myself.</p>
+          </div> <div class="shelf" style="--accent:#435B46;">
+            <h3>Cooking</h3><p>Weeknight dinners, mistakes included.</p>
+          </div> <div class="shelf" style="--accent:#4C3D5A;">
+            <h3>Everything &amp; Anything</h3><p>Whatever doesn't fit anywhere else.</p>
+          </div>
+        </div>
+      </div>
+    </section> <section class="posts" id="posts">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Recent entries</h2>
+        </div> <p class="posts-count">Showing {{ posts|length }} entr{{ posts|length|pluralize:'y,ies' }} written in this language.</p> {% for post in posts %}
+          <div class="post" style="--accent:#556B5E;">
+            <div class="post-body">
+              <span class="post-tag">{{ post.get_category_display }}</span> <h3>{{ post.title }}</h3> <p>{{ post.excerpt }}</p>
+            </div> <span class="post-date">{{ post.created_at|date:'M d' }}</span>
+          </div>
+        {% empty %}
+          <p class="empty-note">No posts yet in this language.</p>
+        {% endfor %}
+      </div>
+    </section> <footer>
+      <p>Arellnox — a slow blog, updated when there's something worth saying</p>
+    </footer>
+  </body>
+</html>
