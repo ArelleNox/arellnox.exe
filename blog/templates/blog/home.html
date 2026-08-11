@@ -1,0 +1,5 @@
+<h1>Arellnox</h1> 
+<p>Showing posts in: {{ current_lang }}</p> 
+<ul> {% for post in posts %} 
+    <li>{{ post.title }} — {{ post.category }}</li> 
+    {% empty %} <li>No posts yet in this language.</li> {% endfor %} </ul>
