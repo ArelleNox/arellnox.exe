@@ -1,0 +1,203 @@
+:root, html[data-theme="dark"], html[data-theme="light"] {
+  --primary: #556B5E;
+  --secondary: #6A5A74;
+  --accent: #6A5A74;
+  --primary-fg: #F2F3F5;
+
+  --body-fg: #D6DBE1;
+  --body-bg: #181A1D;
+  --body-quiet-color: #8a919c;
+  --body-loud-color: #F2F3F5;
+
+  --header-color: #F2F3F5;
+  --header-branding-color: #F2F3F5;
+  --header-bg: #181A1D;
+  --header-link-color: #F2F3F5;
+
+  --breadcrumbs-fg: #8a919c;
+  --breadcrumbs-bg: transparent;
+  --breadcrumbs-link-fg: #8a919c;
+
+  --link-fg: #8fa896;
+  --link-hover-color: #556B5E;
+  --link-selected-fg: #6A5A74;
+
+  --hairline-color: rgba(214,219,225,0.10);
+  --border-color: rgba(214,219,225,0.10);
+
+  --error-fg: #e07a7a;
+  --message-success-bg: #2F3F2E;
+  --message-warning-bg: #4C3D5A;
+  --message-error-bg: #3d1f1f;
+
+  --darkened-bg: #202226;
+  --selected-bg: #232629;
+  --selected-row: #232629;
+
+  --button-fg: #0F1A14;
+  --button-bg: #556B5E;
+  --button-hover-bg: #435B46;
+  --default-button-bg: #556B5E;
+  --default-button-hover-bg: #435B46;
+  --close-button-bg: #3F4247;
+  --close-button-hover-bg: #2A2D31;
+  --delete-button-bg: #6A5A74;
+  --delete-button-hover-bg: #4C3D5A;
+
+  --object-tools-fg: #0F1A14;
+  --object-tools-bg: #556B5E;
+  --object-tools-hover-bg: #435B46;
+
+  --font-family-primary: "Zen Kaku Gothic New", -apple-system, sans-serif;
+}
+
+body{
+  font-family: var(--font-family-primary);
+  background: radial-gradient(circle at 15% 0%, rgba(85,107,94,0.06), transparent 45%),
+              radial-gradient(circle at 100% 100%, rgba(106,90,116,0.06), transparent 45%),
+              var(--body-bg);
+}
+
+#content{
+  padding: 40px 40px 60px;
+}
+
+#header{
+  padding: 24px 40px;
+  border-bottom: 1px solid var(--hairline-color);
+}
+
+#site-name a, #site-name{
+  font-family: "Shippori Mincho", serif;
+  font-weight: 600;
+  font-size: 1.3rem;
+  letter-spacing: 0.01em;
+}
+
+.breadcrumbs{
+  background: transparent !important;
+  padding: 18px 40px 0 !important;
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+}
+
+.module{
+  background: var(--darkened-bg);
+  border: 1px solid var(--hairline-color);
+  border-radius: 10px;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.module h2, .module caption, .inline-group h2{
+  background: transparent !important;
+  color: var(--mist, #F2F3F5) !important;
+  font-family: "Shippori Mincho", serif;
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: none !important;
+  letter-spacing: 0.02em;
+  padding: 18px 22px 14px !important;
+  border-bottom: 1px solid var(--hairline-color);
+}
+
+.module table{
+  border: none;
+}
+
+.module td, .module th{
+  padding: 14px 22px !important;
+  border-bottom: 1px solid var(--hairline-color) !important;
+}
+
+.module tr:last-child td{
+  border-bottom: none !important;
+}
+
+#changelist-filter{
+  border-radius: 10px;
+  border: 1px solid var(--hairline-color);
+  background: var(--darkened-bg);
+}
+#changelist-filter h2{
+  text-transform: none !important;
+  font-family: "Shippori Mincho", serif;
+  font-weight: 600;
+  background: transparent !important;
+  padding: 18px 20px 12px !important;
+}
+#changelist-filter h3{
+  text-transform: none;
+  font-size: 0.8rem;
+  color: var(--body-quiet-color);
+  padding: 0 20px;
+}
+#changelist-filter li{
+  padding: 2px 20px;
+}
+
+.button, input[type=submit], input[type=button], .submit-row input, a.button{
+  border-radius: 6px;
+  text-transform: none;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  padding: 10px 20px;
+}
+
+.login #content-related, .login #container{
+  border-radius: 10px;
+}
+.login .form-row{
+  padding: 10px 0;
+}
+
+#result_list td, #result_list th{
+  padding: 12px 10px !important;
+}
+
+.object-tools a.addlink{
+  border-radius: 6px;
+}
+
+body.dashboard #content-main{
+  margin: 0;
+  padding: 0;
+}
+body.dashboard #content-main .module{
+  margin-left: 0;
+}
+
+body.dashboard #content{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+  max-width: none;
+  width: 100%;
+  margin: 10px 0 0;
+  padding: 0 60px 0 0;
+}
+body.dashboard #content > h1{
+  flex-basis: 100%;
+  width: 100%;
+  order: -1;
+  margin: 0 0 20px 0;
+}
+body.dashboard #content-main{
+  flex: 0 1 440px;
+  margin: 0;
+  padding: 0;
+}
+body.dashboard #content-main .module{
+  margin-left: 0;
+}
+body.dashboard #content-related{
+  flex: 0 1 300px;
+  margin-left: 0;
+}
+@media (max-width: 900px){
+  body.dashboard #content{
+    flex-direction: column;
+  }
+}

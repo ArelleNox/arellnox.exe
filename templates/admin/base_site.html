@@ -1,0 +1,11 @@
+{% extends "admin/base.html" %}
+{% load static %}
+{% block extrastyle %}
+{{ block.super }}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600&family=Zen+Kaku+Gothic+New:wght@300;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'blog/css/admin_custom.css' %}">
+{% endblock %}
+{% block branding %}
+<h1 id="site-name">Arellnox <span style="opacity:0.6;font-weight:300;">— admin</span></h1>
+{% endblock %}
