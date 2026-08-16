@@ -1,0 +1,17 @@
+{% load static %} <!DOCTYPE html> <html lang="{{ post.language }}">
+  <head>
+    <meta charset="UTF-8" /> <title>{{ post.title }} — Arellnox</title> <link rel="preconnect" href="https://fonts.googleapis.com" /> <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600&family=Zen+Kaku+Gothic+New:wght@300;500&display=swap" rel="stylesheet" /> <link rel="stylesheet" href="{% static 'blog/css/style.css' %}" />
+  </head> <body>
+    <header class="nav">
+      <div class="nav-inner">
+        <a href="{% url 'home' %}" class="brand">Arellnox.exe</a>
+      </div>
+    </header> <section class="posts" style="padding-top:60px;">
+      <div class="wrap">
+        <span class="post-tag">{{ post.get_category_display }}</span> <h1 class="title" style="font-size:2.4rem;margin:16px 0;">{{ post.title }}</h1> <p class="post-date">{{ post.created_at|date:'F d, Y' }}</p> <div style="margin-top:40px;font-size:1.05rem;color:var(--ink-soft);line-height:1.8;max-width:70ch;">{{ post.content|linebreaks }}</div> <p style="margin-top:60px;">
+          <a href="{% url 'home' %}" class="btn btn--fill">← Back to journal</a>
+        </p>
+      </div>
+    </section>
+  </body>
+</html>

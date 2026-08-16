@@ -1,93 +1,90 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="{{ current_lang }}">
-<head>
-<meta charset="UTF-8" />
-<title>Arellnox</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{% static 'blog/css/style.css' %}" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Arellnox</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'blog/css/style.css' %}" />
+  </head>
+  <body>
+    <header class="nav">
+      <div class="nav-inner">
+        <div class="brand">{{ ui.brand }}</div>
+        <nav class="links">
+          <div class="lang-toggle">
+            <a href="?lang=en" class="{% if current_lang == 'en' %}active{% endif %}">EN</a>
+            <a href="?lang=fr" class="{% if current_lang == 'fr' %}active{% endif %}">FR</a>
+            <a href="?lang=ja" class="{% if current_lang == 'ja' %}active{% endif %}">JA</a>
+          </div>
+        </nav>
+      </div>
+    </header>
 
-<header class="nav">
-  <div class="nav-inner">
-    <div class="brand">{{ ui.brand }}</div>
-    <nav class="links">
-      <div class="lang-toggle">
-        <a href="?lang=en" class="{% if current_lang == 'en' %}active{% endif %}">EN</a>
-        <a href="?lang=fr" class="{% if current_lang == 'fr' %}active{% endif %}">FR</a>
-        <a href="?lang=ja" class="{% if current_lang == 'ja' %}active{% endif %}">JA</a>
+    <section class="hero">
+      <div class="blob blob--1"></div>
+      <div class="blob blob--2"></div>
+      <div class="moon"></div>
+      <div class="wrap hero-inner">
+        <p class="eyebrow">{{ ui.eyebrow }}</p>
+        <h1 class="title">{{ ui.hero_title|safe }}</h1>
+        <p class="hero-desc">{{ ui.hero_desc|safe }}</p>
+        <a href="#posts" class="btn btn--fill">{{ ui.btn_read }}</a>
       </div>
-    </nav>
-  </div>
-</header>
+    </section>
 
-<section class="hero">
-  <div class="blob blob--1"></div>
-  <div class="blob blob--2"></div>
-  <div class="moon"></div>
-  <div class="wrap hero-inner">
-    <p class="eyebrow">{{ ui.eyebrow }}</p>
-    <h1 class="title">{{ ui.hero_title|safe }}</h1>
-    <p class="hero-desc">{{ ui.hero_desc|safe }}</p>
-    <a href="#posts" class="btn btn--fill">{{ ui.btn_read }}</a>
-  </div>
-</section>
-
-<section class="shelves">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>{{ ui.shelves_h2 }}</h2>
-    </div>
-    <div class="shelf-grid">
-      <div class="shelf" style="--accent:#556B5E;">
-        <h3>Video Games</h3><p>Slow playthroughs and old JRPGs.</p>
-      </div>
-      <div class="shelf" style="--accent:#2F3F2E;">
-        <h3>Game Development</h3><p>Devlogs from tiny personal projects.</p>
-      </div>
-      <div class="shelf" style="--accent:#6A5A74;">
-        <h3>Books</h3><p>What I'm reading, half-finished thoughts.</p>
-      </div>
-      <div class="shelf" style="--accent:#BFC6D1;">
-        <h3>Personal Growth</h3><p>Habits I'm testing on myself.</p>
-      </div>
-      <div class="shelf" style="--accent:#435B46;">
-        <h3>Cooking</h3><p>Weeknight dinners, mistakes included.</p>
-      </div>
-      <div class="shelf" style="--accent:#4C3D5A;">
-        <h3>Everything &amp; Anything</h3><p>Whatever doesn't fit anywhere else.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="posts" id="posts">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>{{ ui.posts_h2 }}</h2>
-    </div>
-    <p class="posts-count">Showing {{ posts|length }} entr{{ posts|length|pluralize:'y,ies' }} written in this language.</p>
-    {% for post in posts %}
-      <div class="post" style="--accent:#556B5E;">
-        <div class="post-body">
-          <span class="post-tag">{{ post.get_category_display }}</span>
-          <h3>{{ post.title }}</h3>
-          <p>{{ post.excerpt }}</p>
+    <section class="shelves">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>{{ ui.shelves_h2 }}</h2>
         </div>
-        <span class="post-date">{{ post.created_at|date:'M d' }}</span>
+        <div class="shelf-grid">
+          <div class="shelf" style="--accent:#556B5E;">
+            <h3>Video Games</h3><p>Slow playthroughs and old JRPGs.</p>
+          </div>
+          <div class="shelf" style="--accent:#2F3F2E;">
+            <h3>Game Development</h3><p>Devlogs from tiny personal projects.</p>
+          </div>
+          <div class="shelf" style="--accent:#6A5A74;">
+            <h3>Books</h3><p>What I'm reading, half-finished thoughts.</p>
+          </div>
+          <div class="shelf" style="--accent:#BFC6D1;">
+            <h3>Personal Growth</h3><p>Habits I'm testing on myself.</p>
+          </div>
+          <div class="shelf" style="--accent:#435B46;">
+            <h3>Cooking</h3><p>Weeknight dinners, mistakes included.</p>
+          </div>
+          <div class="shelf" style="--accent:#4C3D5A;">
+            <h3>Everything &amp; Anything</h3><p>Whatever doesn't fit anywhere else.</p>
+          </div>
+        </div>
       </div>
-    {% empty %}
-      <p class="empty-note">No posts yet in this language.</p>
-    {% endfor %}
-  </div>
-</section>
+    </section>
 
-<footer>
-  <p>{{ ui.footer }}</p>
-</footer>
+    <section class="posts" id="posts">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>{{ ui.posts_h2 }}</h2>
+        </div>
+        <p class="posts-count">Showing {{ posts|length }} entr{{ posts|length|pluralize:'y,ies' }} written in this language.</p>
+        {% for post in posts %}
+          <div class="post" style="--accent:#556B5E;">
+            <div class="post-body">
+              <span class="post-tag">{{ post.get_category_display }}</span>
+              <h3><a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a></h3> <p>{{ post.excerpt }}</p>
+            </div>
+            <span class="post-date">{{ post.created_at|date:'M d' }}</span>
+          </div>
+        {% empty %}
+          <p class="empty-note">No posts yet in this language.</p>
+        {% endfor %}
+      </div>
+    </section>
 
-</body>
+    <footer>
+      <p>{{ ui.footer }}</p>
+    </footer>
+  </body>
 </html>

@@ -1,5 +1,4 @@
-from django.shortcuts import render
-
+from django.shortcuts import render, get_object_or_404
 from .models import Post 
 
 UI_TEXT = { "en": { "brand": "Arellnox.exe", "eyebrow": "a personal, no-niche blog", "hero_title": "Thoughts kept<br>at <em>quiet</em> hours", "hero_desc": "<strong>No niche, no schedule</strong> — just the things I'm learning, playing, cooking and coding.", "btn_read": "Read the journal →", "shelves_h2": "What lives here", "posts_h2": "Recent entries", "footer": "Arellnox — a slow blog, updated when there's something worth saying", }, 
@@ -9,7 +8,10 @@ UI_TEXT = { "en": { "brand": "Arellnox.exe", "eyebrow": "a personal, no-niche bl
 def home(request): 
     lang = request.GET.get("lang", "en") 
     posts = Post.objects.filter(language=lang, is_published=True) 
-    context = { "posts": posts, "current_lang": lang, } 
     context = { "posts": posts, "current_lang": lang, "ui": UI_TEXT.get(lang, UI_TEXT["en"]), }
     return render(request, "blog/home.html", context)
  
+def post_detail(request, slug): 
+    post = get_object_or_404(Post, slug=slug, is_published=True) 
+    context = { "post": post, "ui": UI_TEXT.get(post.language, UI_TEXT["en"]), } 
+    return render(request, "blog/post_detail.html", context)
