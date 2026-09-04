@@ -73,9 +73,9 @@
           <div class="post" style="--accent:#556B5E;">
             <div class="post-body">
               <span class="post-tag">{{ post.get_category_display }}</span>
-              <h3><a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a></h3> <p>{{ post.excerpt }}</p>
+              <h3><a href="{% url 'post_detail' post.translation_group post.language %}">{{ post.title }}</a></h3> <p>{{ post.excerpt }}</p>
             </div>
-            <span class="post-date">{{ post.created_at|date:'M d' }}</span>
+            <span class="post-date">{{ post.created_at|date:ui.date_format_short }}</span>
           </div>
         {% empty %}
           <p class="empty-note">No posts yet in this language.</p>

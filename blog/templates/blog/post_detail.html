@@ -4,12 +4,16 @@
   </head> <body>
     <header class="nav">
       <div class="nav-inner">
-        <a href="{% url 'home' %}" class="brand">Arellnox.exe</a>
+        <a href="{% url 'home' %}?lang={{ post.language }}" class="brand">{{ ui.brand }}</a>
       </div>
     </header> <section class="posts" style="padding-top:60px;">
       <div class="wrap">
-        <span class="post-tag">{{ post.get_category_display }}</span> <h1 class="title" style="font-size:2.4rem;margin:16px 0;">{{ post.title }}</h1> <p class="post-date">{{ post.created_at|date:'F d, Y' }}</p> <div style="margin-top:40px;font-size:1.05rem;color:var(--ink-soft);line-height:1.8;max-width:70ch;">{{ post.content|linebreaks }}</div> <p style="margin-top:60px;">
-          <a href="{% url 'home' %}" class="btn btn--fill">← Back to journal</a>
+        <span class="post-tag">{{ post.get_category_display }}</span> 
+        <h1 class="title" style="font-size:2.4rem;margin:16px 0;">{{ post.title }}</h1> 
+        <p class="post-date">{{ post.created_at|date:ui.date_format }}</p> 
+        <div style="margin-top:40px;font-size:1.05rem;color:var(--ink-soft);line-height:1.8;max-width:70ch;">{{ post.content|linebreaks }}</div> 
+        <p style="margin-top:60px;">
+          <a href="{% url 'home' %}?lang={{ post.language }}" class="btn btn--fill">{{ ui.btn_back }}</a> 
         </p>
       </div>
     </section>
